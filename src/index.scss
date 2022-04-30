@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');
+@import '~bootstrap/scss/bootstrap';
+
+$background-color: #ffffff;
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color:$background-color;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+.main {
+    flex-grow: 1;
+}
+
+.featured-media{
+    background-size: cover;
+    background-position: center center;
+    height: 400px;
+    width: 100%;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+
+    &:hover {
+        & > .dropdown-content {
+            display: block;
+        }
+    }
+
+    & > .dropdown-content .dropdown {
+        & > .dropdown-content {
+            display: none;
+        }
+
+        &:hover {
+            & > .dropdown-content {
+                display: block;
+            }
+        }
+    }
+}
+
+.dropdown-primary::after {
+    content: ' \2193';
+}
+
+.dropdown-toggler::after{
+    display: none;
+    float: right;
+    padding: 10px;
+    text-align: center;
+    width: 50px;
+    height: 40px;
+    color: $white;
+    cursor: pointer;
+    content: '\2193';
+}
+
+.dropdown-content {
+    list-style-type: none;
+    display: none;
+    position: absolute;
+    background: $gray-100;
+    color: $gray-800;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 0;
+    z-index: 1;
+
+    & > .dropdown .dropdown-content {
+        top: 0;
+        left: 100%;
+    }
+
+    li {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    a {
+        display: block;
+        padding: 12px 16px;
+        color: $gray-800;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    a.active, a.active:hover{
+        background: $gray-800;
+        color: $white;
+    }
+
+    a.dropdown-primary, a.dropdown-link{
+        &:hover{
+            background: $gray-800;
+            color: $gray-100;
+        }
+    }
+}
+
+@include media-breakpoint-down(xl) {
+    .featured-media{
+        height: 300px;
+    }
+
+    .dropdown-toggler::after{
+        display: block;
+    }
+
+    .dropdown-primary::after {
+        content: none;
+    }
+
+    .dropdown-content{
+        box-shadow: none;
+        position: static;
+        left: 0px;
+        background-color: $gray-200;
+
+        & > .dropdown .dropdown-content{
+            padding-left: 20px;
+        }
+
+        .dropdown-toggler::after{
+            color: $gray-800;
+        }
+
+        &.active, &.active:hover{
+            display: block;
+        }
+    }
+
+    .dropdown{
+        .dropdown-primary{
+            margin-right:50px;
+        }
+
+        &:hover {
+            & > .dropdown-content {
+                &.active {
+                    display: block;
+                }
+                display: none;
+            }
+        }
+
+        & > .dropdown-content .dropdown {
+            & > .dropdown-content.active {
+                display: block;
+            }
+
+            &:hover {
+                & > .dropdown-content {
+                    &.active {
+                        display: block;
+                    }
+                    display: none;
+                }
+            }
+        }
+    }
+
+}
+
+.loading, .error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.taxonomy-badge {
+    margin: 0 2px;
+    color:$white;
+
+    a{
+        color: $white;
+        text-decoration: none;
+    }
+}
+
+.lds-facebook {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.lds-facebook div {
+    display: inline-block;
+    position: absolute;
+    left: 8px;
+    width: 16px;
+    background: $gray-900;
+    animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+    border-radius: 3px;
+}
+
+.lds-facebook div:nth-child(1) {
+    left: 8px;
+    animation-delay: -0.24s;
+}
+
+.lds-facebook div:nth-child(2) {
+    left: 32px;
+    animation-delay: -0.12s;
+}
+
+.lds-facebook div:nth-child(3) {
+    left: 56px;
+    animation-delay: 0;
+}
+
+@keyframes lds-facebook {
+    0% {
+        top: 8px;
+        height: 64px;
+    }
+
+    50%, 100% {
+        top: 24px;
+        height: 32px;
+    }
+}
+  
