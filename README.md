@@ -66,4 +66,4 @@ export const PERMALINK_ROUTE = '/post';
 
 ## Download
 
-- [Download Latest Version](https://github.com/pablotru/wordpress-react/releases/download/v1.0.0/v1.0.0.zip)
+- [Download Latest Version](https://github.com/pablotru/wordpress-react/releases/tag/v1.0.0)
