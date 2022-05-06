@@ -4,6 +4,7 @@ const config = window.config;
 
 export const BLOG_ROUTE = '/page';
 export const PERMALINK_ROUTE = '/post';
+export const REST_ROUTE = '/wp-json/wp/v2'
 
 const defaultMenu = [
   {

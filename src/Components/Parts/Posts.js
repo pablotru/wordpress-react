@@ -6,10 +6,11 @@ import Taxonomies from './Taxonomies';
 
 const Posts = (props) => {
   const data = props.data.slice(0,(POSTS_PER_PAGE - 1));
+  const {pageTitle} = props;
 
   return(
     <div className="posts">
-      <p className="h2">Posts</p>
+      <h2 className="text-capitalize">{pageTitle}</h2>
       {data.map((post) => {
         const {title, excerpt, slug, date, tags, categories} = post;
         const postLink = `${PERMALINK_ROUTE}/${slug}`;

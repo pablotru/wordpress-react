@@ -1,7 +1,7 @@
 <?php
 
-define('MY_THEMESLUG', 'wp_react' );
-define('MY_THEME_TEXTDOMAIN', 'wp_react' );
+define('MY_THEMESLUG', 'wp_react');
+define('MY_THEME_TEXTDOMAIN', 'wp_react');
 
 require get_template_directory() . '/classes/wp-react-customizer.php';
 new WP_React_Customizer();
@@ -39,7 +39,7 @@ class Main{
     );
   }
 
-  public function set_permalink(){
+  public function set_permalink() {
     global $wp_rewrite;
     $wp_rewrite->set_permalink_structure('/post/%postname%/');
   }
