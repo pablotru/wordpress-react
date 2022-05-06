@@ -1,11 +1,11 @@
 @import '~bootstrap/scss/bootstrap';
 
-$background-color: #ffffff;
+$background-color: $white;
 
 body {
     margin: 0;
     padding: 0;
-    background-color:$background-color;
+    background-color: $background-color;
 }
 
 .wrapper {
@@ -19,7 +19,7 @@ body {
     flex-grow: 1;
 }
 
-.featured-media{
+.featured-media {
     background-size: cover;
     background-position: center center;
     height: 400px;
@@ -53,7 +53,7 @@ body {
     content: ' \2193';
 }
 
-.dropdown-toggler::after{
+.dropdown-toggler::after {
     display: none;
     float: right;
     padding: 10px;
@@ -95,13 +95,13 @@ body {
         cursor: pointer;
     }
 
-    a.active, a.active:hover{
+    a.active, a.active:hover {
         background: $gray-800;
         color: $white;
     }
 
-    a.dropdown-primary, a.dropdown-link{
-        &:hover{
+    a.dropdown-primary, a.dropdown-link {
+        &:hover {
             background: $gray-800;
             color: $gray-100;
         }
@@ -109,11 +109,11 @@ body {
 }
 
 @include media-breakpoint-down(xl) {
-    .featured-media{
+    .featured-media {
         height: 300px;
     }
 
-    .dropdown-toggler::after{
+    .dropdown-toggler::after {
         display: block;
     }
 
@@ -121,28 +121,28 @@ body {
         content: none;
     }
 
-    .dropdown-content{
+    .dropdown-content {
         box-shadow: none;
         position: static;
         left: 0px;
         background-color: $gray-200;
 
-        & > .dropdown .dropdown-content{
+        & > .dropdown .dropdown-content {
             padding-left: 20px;
         }
 
-        .dropdown-toggler::after{
+        .dropdown-toggler::after {
             color: $gray-800;
         }
 
-        &.active, &.active:hover{
+        &.active, &.active:hover {
             display: block;
         }
     }
 
-    .dropdown{
-        .dropdown-primary{
-            margin-right:50px;
+    .dropdown {
+        .dropdown-primary {
+            margin-right: 50px;
         }
 
         &:hover {
@@ -181,7 +181,8 @@ body {
 
 .taxonomy-badge {
     margin: 0 2px;
-    color:$white;
+    color: $white;
+    text-transform: capitalize;
 
     a{
         color: $white;

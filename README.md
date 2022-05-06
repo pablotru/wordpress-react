@@ -18,7 +18,7 @@ The objective of this project was to develop a functioning hybrid WordPress them
 - The WordPress permalink structure have been statically set to match the React Routes in the `./functions.php` and `./src/Common/WordPress.js` file for SEO purposes
 
 ```
-public function set_permalink(){
+public function set_permalink() {
   global $wp_rewrite;
   $wp_rewrite->set_permalink_structure('/post/%postname%/');
 }
@@ -66,4 +66,4 @@ export const PERMALINK_ROUTE = '/post';
 
 ## Download
 
-- [Download Latest Version](https://github.com/pablotru/wordpress-react/releases/tag/v1.0.0)
+- [Download Latest Version](https://github.com/pablotru/wordpress-react/releases/tag/v1.0.1)

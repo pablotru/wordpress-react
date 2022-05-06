@@ -9,7 +9,9 @@ class WP_React_Theme_Config{
   }
 
   public function site_title_shortcode() {
-    $protocols = array('http://', 'http://www.', 'www.');
+    $protocols = array(
+      'http://', 'http://www.', 'www.', 'https://', 'https://www.'
+    );
     $site_url = get_bloginfo('wpurl');
     $site_title = str_replace($protocols, '', $site_url);
     return $site_title;
@@ -88,7 +90,7 @@ class WP_React_Theme_Config{
       'posts_per_page' => - 1,
     );
     
-    $query_images = new WP_Query( $query_images_args );
+    $query_images = new WP_Query($query_images_args);
     
     $images = array();
     foreach ( $query_images->posts as $image ) {

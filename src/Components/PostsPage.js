@@ -21,6 +21,14 @@ const PostsPage = (props) => {
   const nextPage = data.length > POSTS_PER_PAGE ? currentRoute + (activePage + 1) : false;
   const subject = 'Posts';
 
+  const pageTitle = () => {
+    if (taxonomy && taxonomyID) {
+      const taxonomyTitle = taxonomy.list[taxonomyID].name;
+      return `${taxonomy.value}: ${taxonomyTitle}`;
+    }
+    return 'Posts';
+  }
+
   useEffect(() => {
     dispatch(getPosts(activePage, taxonomy, taxonomyID));
   }, [activePage, taxonomyID]);
@@ -33,7 +41,7 @@ const PostsPage = (props) => {
         : <Fragment>
             {!isEmpty(data)
               ? <Fragment>
-                  <Posts data={data}/>
+                  <Posts pageTitle={pageTitle()} data={data}/>
                   <Pagination previousPage={previousPage} nextPage={nextPage}/>
                 </Fragment>
               : <NotFound/>
