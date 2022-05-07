@@ -4,5 +4,5 @@
     Author: Pablo Trujillo
     Author URL: https://github.com/pablotru
     Description: The objective of this project was to develop a functioning hybrid WordPress theme utilizing the WP REST API and ReactJS. Instead of creating a headless ReactJS application (another approach), the application is served through WordPress as a theme allowing PHP variables to be passed to the client-side on render.
-    Version: 1.0.0
+    Version: 1.0.1
 */

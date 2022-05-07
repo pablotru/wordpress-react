@@ -23,7 +23,7 @@ const PostsPage = (props) => {
 
   const pageTitle = () => {
     if (taxonomy && taxonomyID) {
-      const taxonomyTitle = taxonomy.list[taxonomyID].slug;
+      const taxonomyTitle = taxonomy.list[taxonomyID].name;
       return `${taxonomy.value}: ${taxonomyTitle}`;
     }
     return 'Posts';
