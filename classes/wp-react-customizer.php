@@ -2,43 +2,43 @@
 
 class WP_React_Customizer {
   public function __construct() {
-    add_action( 'customize_register', array($this, 'register'), 100);
+    add_action('customize_register', array($this, 'register'), 100);
   }
 
   public function register($wp_customize) {
     $wp_customize->add_panel(
-      MY_THEMESLUG . '_footer_options',
+      'wp_react_footer_options',
       array(
         'priority' => 1,
-        'title' => __('Footer Options' , MY_THEME_TEXTDOMAIN),
-        'description' => '',
+        'title' => __('Footer Options'),
+        'description' => 'Footer copyright textarea',
       )
     );
 
     $wp_customize->add_section(
-      MY_THEMESLUG . '_footer',
+      'wp_react_footer',
       array(
-        'title'    => __('Footer', MY_THEME_TEXTDOMAIN),
+        'title'    => __('Footer'),
         'priority' => 10,
-        'panel' => MY_THEMESLUG . '_footer_options'
+        'panel' => 'wp_react_footer_options'
       )
     );
 
     $wp_customize->add_setting(
-      MY_THEMESLUG . '_footer_copyright',
+      'wp_react_footer_copyright',
       array(
-        'default'           => __('Copyright [copyright] [current_year] [site_title]', MY_THEME_TEXTDOMAIN),
+        'default' => __('Copyright [copyright] [current_year] [site_title]'),
         'sanitize_callback' => array($this, 'sanitize_text')
       )
     );
 
     $wp_customize->add_control(
-      MY_THEMESLUG . '_footer_copyright',
+      'wp_react_footer_copyright',
       array(
         'type'     => 'textarea',
-        'label'    => __('Copyright', MY_THEME_TEXTDOMAIN),
-        'section'  => MY_THEMESLUG . '_footer',
-        'settings' => MY_THEMESLUG . '_footer_copyright'
+        'label'    => __('Copyright'),
+        'section'  => 'wp_react_footer',
+        'settings' => 'wp_react_footer_copyright'
       )
     );
   }

@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useParams} from 'react-router-dom';
 import {getPosts} from '../Actions/DataActions';
 import {isEmpty} from 'lodash';
-import {POSTS_PER_PAGE, BLOG_ROUTE} from '../Common/WordPress';
+import {FRONT_PAGE, WP_TAGLINE, BLOG_ROUTE} from '../Common/WordPress';
 import HelmetTitle from '../Common/HelmetTitle';
 import Loading from './Parts/Loading';
 import Posts from './Parts/Posts';
@@ -12,19 +12,24 @@ import NotFound from './Parts/NotFound';
 
 const PostsPage = (props) => {
   const dispatch = useDispatch();
-  const {data, loading} = useSelector((state) => state.postsReducer);
+  const {data, loading, headers} = useSelector((state) => state.postsReducer);
   const {taxonomy, taxonomyID, route} = props;
   const {pageNumber} = useParams();
   const activePage = parseInt(pageNumber) ? parseInt(pageNumber) : 1;
-  const currentRoute = route ? `${route}/`: `${BLOG_ROUTE}/`;
-  const previousPage = activePage > 1 ? currentRoute + (activePage - 1) : false;
-  const nextPage = data.length > POSTS_PER_PAGE ? currentRoute + (activePage + 1) : false;
-  const subject = 'Posts';
+  const pageRoute = route ? `${route}/`: `${BLOG_ROUTE}/`;
+  const pageCount = headers ? headers['x-wp-totalpages'] : null;
+
+  const subject = () => {
+    if (!FRONT_PAGE && !(taxonomyID)) {
+      return WP_TAGLINE;
+    }
+    return pageTitle();
+  }
 
   const pageTitle = () => {
-    if (taxonomy && taxonomyID) {
+    if (taxonomyID) {
       const taxonomyTitle = taxonomy.list[taxonomyID].name;
-      return `${taxonomy.value}: ${taxonomyTitle}`;
+      return `${taxonomy.label}: ${taxonomyTitle}`;
     }
     return 'Posts';
   }
@@ -35,14 +40,14 @@ const PostsPage = (props) => {
 
   return(
     <Fragment>
-      <HelmetTitle subject={subject}/>
+      <HelmetTitle subject={subject()}/>
       {loading
         ? <Loading />
         : <Fragment>
             {!isEmpty(data)
               ? <Fragment>
                   <Posts pageTitle={pageTitle()} data={data}/>
-                  <Pagination previousPage={previousPage} nextPage={nextPage}/>
+                  <Pagination activePage={activePage} pageCount={pageCount} pageRoute={pageRoute}/>
                 </Fragment>
               : <NotFound/>
             }

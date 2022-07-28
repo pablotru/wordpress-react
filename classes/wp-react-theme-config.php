@@ -1,6 +1,6 @@
 <?php
 
-class WP_React_Theme_Config{
+class WP_React_Theme_Config {
   public function __construct() {
     add_action('wp_enqueue_scripts', array($this, 'theme_config'));
     add_shortcode('site_title', array($this, 'site_title_shortcode'));
@@ -62,7 +62,7 @@ class WP_React_Theme_Config{
   }
   
   public function get_footer_text() {
-    $footer = get_theme_mod(MY_THEMESLUG . '_footer_copyright');
+    $footer = get_theme_mod('wp_react_footer_copyright', __('Copyright [copyright] [current_year] [site_title]'));
     return do_shortcode($footer);
   }
   
@@ -70,14 +70,16 @@ class WP_React_Theme_Config{
     $menu_by_name = wp_get_nav_menu_name($menu_name);
     $menu = wp_get_nav_menu_items($menu_by_name);
     $menu_list = array();
-    foreach ($menu as $item) {
-      array_push($menu_list, array(
-        'ID' => (int)$item->object_id,
-        'parent' => $item->post_parent,
-        'order' => $item->menu_order,
-        'url' => str_replace(get_bloginfo('wpurl'), '', $item->url),
-        'title' => $item->title
-      ));
+    if ($menu) {
+      foreach ($menu as $item) {
+        array_push($menu_list, array(
+          'ID' => (int)$item->object_id,
+          'parent' => $item->post_parent,
+          'order' => $item->menu_order,
+          'url' => str_replace(get_bloginfo('wpurl'), '', $item->url),
+          'title' => $item->title
+        ));
+      }
     }
     return $menu_list;
   }

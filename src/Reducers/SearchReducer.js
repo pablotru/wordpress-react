@@ -1,6 +1,7 @@
 const DefaultState = {
   loading: true,
   data: [],
+  headers: null,
   error: null
 }
   
@@ -15,7 +16,8 @@ const PostsReducer = (state = DefaultState, action) => {
       return {
         ...state,
         loading: false,
-        data: action.payload
+        data: action.payload,
+        headers: action.headers
       }
     case 'SEARCH_FAIL':
       return {

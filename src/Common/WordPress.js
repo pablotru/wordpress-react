@@ -4,7 +4,7 @@ const config = window.config;
 
 export const BLOG_ROUTE = '/page';
 export const PERMALINK_ROUTE = '/post';
-export const REST_ROUTE = '/wp-json/wp/v2'
+export const REST_ROUTE = '/wp-json/wp/v2';
 
 const defaultMenu = [
   {
@@ -28,6 +28,7 @@ export const WP_IMAGES = config.images;
 export const WP_FOOTER = config.footer;
 
 export const TAG_TYPE = {
+  label: 'Tag',
   value: 'tag',
   param: 'tags',
   route: `${PERMALINK_ROUTE}/tag`,
@@ -35,6 +36,7 @@ export const TAG_TYPE = {
 }
 
 export const CATEGORY_TYPE = {
+  label: 'Category',
   value: 'category',
   param: 'categories',
   route: `${PERMALINK_ROUTE}/category`,
