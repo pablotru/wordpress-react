@@ -8,6 +8,7 @@ import HelmetTitle from '../Common/HelmetTitle';
 import Loading from './Parts/Loading';
 import NotFound from './Parts/NotFound';
 import PageContent from './Parts/PageContent';
+import FeaturedImage from './Parts/FeaturedImage';
 
 const Page = (props) => {
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ const Page = (props) => {
         : <Fragment>
           {!isEmpty(data)
             ? <Fragment>
+                <FeaturedImage image={data.featured_media}/>
                 <PageContent {...data}/>
               </Fragment>
             : <NotFound/>

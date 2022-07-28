@@ -7,15 +7,15 @@ const Results = (props) => {
 
   return(
     <div className="results">
-      <p className="h2">Results: {query}</p>
+      <p className="h2">Search: {query}</p>
       {data.map((result) => {
         const {title, url} = result;
         const postLink = url.replace(window.location.origin, '');
 
         return (
-          <div className="card shadow-sm p-3 my-3">
-            <h5 className="card-title" dangerouslySetInnerHTML={{__html:title}}/>
-            <NavLink className="card-link" to={postLink}>Read more</NavLink>
+          <div className="border-bottom row py-3 px-1 my-3">
+            <h5 dangerouslySetInnerHTML={{__html:title}}/>
+            <NavLink to={postLink}>Read more</NavLink>
           </div>
         );
       })}

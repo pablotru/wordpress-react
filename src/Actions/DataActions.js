@@ -8,15 +8,16 @@ export const getPosts = (activePage, taxonomy=null, taxonomyID=null) => async di
     });
 
     const postTaxonomy = taxonomy && taxonomyID ? `&${taxonomy.param}=${taxonomyID}` : '';
-    const offset = (activePage - 1) * POSTS_PER_PAGE;
-    const url = `${REST_ROUTE}/posts/?per_page=${(POSTS_PER_PAGE + 1)}&offset=${offset}${postTaxonomy}`;
+    const url = `${REST_ROUTE}/posts/?per_page=${POSTS_PER_PAGE}&page=${activePage}${postTaxonomy}`;
 
     await axios.get(url).then((re) => {
       const payload = re.data;
+      const headers = re.headers;
       
       dispatch({
         type: 'POSTS_SUCCESS',
-        payload: payload
+        payload: payload,
+        headers: headers
       });
     });
 
@@ -33,15 +34,16 @@ export const getSearch = (activePage, query) => async dispatch => {
       type: 'SEARCH_LOADING'
     });
 
-    const offset = (activePage - 1) * POSTS_PER_PAGE;
-    const url = `${REST_ROUTE}/search/?search=${query}&per_page=${(POSTS_PER_PAGE + 1)}&offset=${offset}`;
+    const url = `${REST_ROUTE}/search/?search=${query}&per_page=${POSTS_PER_PAGE}&page=${activePage}`;
 
     await axios.get(url).then((re) => {
       const payload = re.data;
+      const headers = re.headers;
 
       dispatch({
         type: 'SEARCH_SUCCESS',
-        payload: payload
+        payload: payload,
+        headers: headers
       });
     });
 
