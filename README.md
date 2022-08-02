@@ -62,8 +62,8 @@ export const PERMALINK_ROUTE = '/post';
 
 - The live demo of the project can be found at [wordpress-react.pablotru.me](https://wordpress-react.pablotru.me/)
 
-![Live Demo Screenshot](/Screenshot.png "Live Demo Screenshot")
+![Live Demo Screenshot](/screenshot.png "Live Demo Screenshot")
 
 ## Download
 
-- [Download Latest Version](https://github.com/pablotru/wordpress-react/releases/tag/v1.0.1)
+- [Download Latest Version](https://github.com/pablotru/wordpress-react/releases/tag/v1.0.2)
